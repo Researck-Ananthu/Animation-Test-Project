@@ -10,7 +10,7 @@ export default function AnimatedBackground() {
   const [eventElement, setEventElement] = useState(null);
 
   useEffect(() => {
-    const el = document.getElementById("HeroSection");
+    const el = document.getElementById("Home");
     if (el) setEventElement(el);
   }, []);
 

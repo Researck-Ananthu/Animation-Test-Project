@@ -32,7 +32,7 @@ const AnimatedBackground = dynamic(() => import("./AnimatedBackground"), {
 const HeroSection = () => {
   return (
     <section
-      id="HeroSection"
+      id="Home"
       data-section="Home"
       className="relative text-foreground h-screen w-full pt-1 xl:pt-3 scroll-mt-24 selection-orange"
     >
