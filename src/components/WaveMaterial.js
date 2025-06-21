@@ -1,13 +1,13 @@
-import * as THREE from 'three'
-import { extend } from '@react-three/fiber'
-import { shaderMaterial } from '@react-three/drei'
+import * as THREE from "three";
+import { extend } from "@react-three/fiber";
+import { shaderMaterial } from "@react-three/drei";
 
 // Tutorial: https://www.youtube.com/watch?v=f4s1h2YETNY
 const WaveMaterial = shaderMaterial(
   {
     time: 0,
     resolution: new THREE.Vector2(),
-    pointer: new THREE.Vector2()
+    pointer: new THREE.Vector2(),
   },
   /*glsl*/ `
       varying vec2 vUv;
@@ -36,7 +36,7 @@ const WaveMaterial = shaderMaterial(
         vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / resolution.y;      
         vec2 uv0 = uv;
         vec3 finalColor = vec3(0.0);
-        uv = fract(uv * 1.5) - 0.5;     
+        uv = fract(uv * 1.0) - 0.5;      // Adjust the scale of the wave  
         uv = sin(uv * 0.5) - pointer;     
         float d = length(uv) * exp(-length(uv0));
         vec3 col = palette(length(uv0) + time * 0.4);
@@ -46,8 +46,8 @@ const WaveMaterial = shaderMaterial(
         finalColor += col * d;
         gl_FragColor = vec4(finalColor, 1.0);   
       }`
-)
+);
 
-extend({ WaveMaterial })
+extend({ WaveMaterial });
 
-export { WaveMaterial }
+export { WaveMaterial };
